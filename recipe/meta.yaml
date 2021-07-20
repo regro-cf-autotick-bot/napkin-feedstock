@@ -1,13 +1,13 @@
 {% set name = "napkin" %}
-{% set version = "0.6.8" %}
+{% set version = "0.6.9" %}
 
 package:
-  name: "{{ name|lower }}"
-  version: "{{ version }}"
+  name: {{ name|lower }}
+  version: {{ version }}
 
 source:
-  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
-  sha256: 2bd3352f588b4005a9e3dc20d39d338838dd8926ff85ddd4629dfd04009a8fe6
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: fbc938eca99dee0f4c37bc1d6491b5826a779db468c5fdbc1b3ef58cc0e58f5a
 
 build:
   noarch: python
@@ -15,7 +15,7 @@ build:
   entry_points:
     - napkin = napkin.cli:main
     - napkin_plantuml = napkin.plantuml_cli:main
-  script: "{{ PYTHON }} -m pip install . -vv"
+  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
@@ -42,7 +42,7 @@ about:
   license: MIT
   license_family: MIT
   license_file: LICENSE
-  summary: "Python DSL for writing PlantUML sequence diagram"
+  summary: Python DSL for writing PlantUML sequence diagram
   dev_url: https://github.com/pinetr2e/napkin
 
 extra:
