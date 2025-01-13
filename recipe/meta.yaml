@@ -6,12 +6,12 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: fbc938eca99dee0f4c37bc1d6491b5826a779db468c5fdbc1b3ef58cc0e58f5a
 
 build:
   noarch: python
-  number: 0
+  number: 1
   entry_points:
     - napkin = napkin.cli:main
     - napkin_plantuml = napkin.plantuml_cli:main
@@ -20,10 +20,10 @@ build:
 requirements:
   host:
     - pip
-    - python >=3
+    - python {{ python_min }}
     - requests
   run:
-    - python >=3
+    - python >={{ python_min }}
     - requests
 
 test:
@@ -36,6 +36,7 @@ test:
     - pip check
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/pinetr2e/napkin
